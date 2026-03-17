@@ -24,6 +24,8 @@
 
 import csv
 import datetime
+import subprocess   
+
 
 LOG_FILE = "diagnostics.csv"
 
