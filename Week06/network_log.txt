@@ -1,0 +1,24 @@
+[2026-03-17 20:16:31] PING github.com
+
+Pinging github.com [140.82.112.3] with 32 bytes of data:
+Reply from 140.82.112.3: bytes=32 time=46ms TTL=49
+Reply from 140.82.112.3: bytes=32 time=31ms TTL=49
+Reply from 140.82.112.3: bytes=32 time=31ms TTL=49
+
+Ping statistics for 140.82.112.3:
+    Packets: Sent = 3, Received = 3, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 31ms, Maximum = 46ms, Average = 36ms
+----------------------------------------
+[2026-03-17 20:20:32] PING google.com
+
+Pinging google.com [2607:f8b0:4023:1803::8b] with 32 bytes of data:
+Reply from 2607:f8b0:4023:1803::8b: time=67ms 
+Reply from 2607:f8b0:4023:1803::8b: time=25ms 
+Reply from 2607:f8b0:4023:1803::8b: time=25ms 
+
+Ping statistics for 2607:f8b0:4023:1803::8b:
+    Packets: Sent = 3, Received = 3, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 25ms, Maximum = 67ms, Average = 39ms
+----------------------------------------
