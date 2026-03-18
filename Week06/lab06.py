@@ -1,7 +1,7 @@
 # ============================================================
 #  WEEK 06 LAB: NETWORK DIAGNOSTIC LOGGER
 #  COMP2152 — Windows Version
-#  [Your Name Here]
+#  [Jasmeen Kaur]
 # ============================================================
 #
 #  This program runs network commands (ping, nslookup, ipconfig),
@@ -22,35 +22,9 @@
 #
 # ============================================================
 
+import subprocess
 import csv
-import datetime
-import subprocess   
-
-
-LOG_FILE = "diagnostics.csv"
-
-# Returns the current timestamp as a string
-def get_timestamp():
-    return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-# Append a row to CSV log
-def log_to_csv(filename, command, target, result, status):
-    timestamp = get_timestamp()
-    with open(filename, "a", newline="") as file:
-        writer = csv.writer(file)
-        writer.writerow([timestamp, command, target, result, status])
-
-# Read the CSV log and print each row nicely
-def read_csv_log(filename):
-    try:
-        with open(filename, "r", newline="") as file:
-            reader = csv.reader(file)
-            for row in reader:
-                print(" | ".join(row))
-    except FileNotFoundError:
-        print("CSV log file not found. No entries yet.")
-
-
+from datetime import datetime
 
 
 # ============================================================
@@ -222,14 +196,15 @@ def parse_arp_table(output):
 # ============================================================
 
 def write_to_log(filename, entry):
+    """Append a log entry to a text file."""
     with open(filename, "a") as file:
         file.write(entry + "\n")
 
 
 def read_log(filename):
+    """Read and return the entire contents of a log file."""
     with open(filename, "r") as file:
         return file.read()
-
 
 
 # This function is COMPLETE — it uses write_to_log() above
@@ -260,10 +235,9 @@ def log_command_result(command_name, target, output, filename):
 LOG_FILE = "diagnostics.csv"
 
 
-import csv
-
 def log_to_csv(filename, command, target, result, status):
-    timestamp = get_timestamp()
+    """Append one row to the CSV log file with a timestamp."""
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     with open(filename, "a", newline="") as file:
         writer = csv.writer(file)
@@ -271,11 +245,13 @@ def log_to_csv(filename, command, target, result, status):
 
 
 def read_csv_log(filename):
+    """Read and display all rows from the CSV log file."""
+
     with open(filename, "r", newline="") as file:
         reader = csv.reader(file)
+
         for row in reader:
             print(" | ".join(row))
-
 
 
 # This function is COMPLETE — it uses the CSV functions above
@@ -369,10 +345,10 @@ def safe_read_log(filename):
         with open(filename, "r") as file:
             content = file.read()
 
-        if content == "":
-            print("Log file is empty.")
-            return ""
-        else:
+            if content == "":
+                print("Log file is empty.")
+                return ""
+
             return content
 
     except FileNotFoundError:
@@ -381,9 +357,6 @@ def safe_read_log(filename):
 
     finally:
         print("Log read attempt completed.")
-
-
-
 
 def get_valid_input(prompt, valid_options):
     """Keep asking for input until the user enters a valid option."""
